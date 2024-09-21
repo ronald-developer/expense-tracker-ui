@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12">
+				<form id="expense-form" [formGroup]="form" (ngSubmit)="create()">
+					<ion-item>
+						<ion-text color="primary">
+							<h1>New expense</h1>
+						</ion-text>
+					</ion-item>
+					<ion-item >
+						<!-- <app-expense-category-selector formControlName="expenseCategoryId"></app-expense-category-selector> -->
+						<ion-select formControlName="expenseCategoryId" label="Expense category" label-placement="floating" >
+						  <ion-select-option [value]="data.id" *ngFor="let data of source|async" >{{data.name}}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+					<ion-item>
+						<ion-label position="floating">Description</ion-label>
+						<ion-input formControlName="description" type="text"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Amount</ion-label>
+						<ion-input formControlName="amount" type="number"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating">Date</ion-label>
+						<ion-input type="date" formControlName="date"></ion-input>
+					</ion-item>
+				</form>
+
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-button fill="solid" type="submit" form="expense-form" expand="full" size="default"  >
+					<ion-icon slot="start" name="save-outline"></ion-icon>
+					Save
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+
+</ion-content>
