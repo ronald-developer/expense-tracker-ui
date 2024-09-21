@@ -1,3 +1,8 @@
 {
-  "typescript.preferences.autoImportFileExcludePatterns": ["@ionic/angular/common", "@ionic/angular/standalone"]
+"typescript.preferences.autoImportFileExcludePatterns": [
+	"@ionic/angular/common",
+	"@ionic/angular/standalone"
+],
+"appService.defaultWebAppToDeploy": "/subscriptions/78926571-811e-44a4-8645-2fbad521e8cd/resourceGroups/ExpenseTrackerApiResourceGroup/providers/Microsoft.Web/sites/ExpenseTrackerUi",
+"appService.deploySubpath": "www"
 }

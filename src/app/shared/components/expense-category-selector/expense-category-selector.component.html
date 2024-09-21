@@ -1,0 +1,3 @@
+<ion-select [(ngModel)]="expenseCategoryId" label="Select expense category" label-placement="floating" >
+	<ion-select-option [value]="data.id" *ngFor="let data of source|async" >{{data.name}}</ion-select-option>
+ </ion-select>

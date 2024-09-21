@@ -1,0 +1,13 @@
+<ion-content [fullscreen]="true">
+
+	<ion-list>
+		<ion-item>
+			<ion-text color="primary">
+				<h1>Expense categories</h1>
+			  </ion-text>
+		</ion-item>
+		<ion-item *ngFor="let data of source|async">
+			<ion-label>{{data.name}}</ion-label>
+		</ion-item>
+	</ion-list>
+</ion-content>
