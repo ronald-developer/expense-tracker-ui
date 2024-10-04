@@ -15,12 +15,23 @@ export class ExpensesPage implements ViewDidEnter {
 
 	source!: Observable<ExpenseModel[]>;
 	expenseCategories!: Observable<ExpenseCategoryModel[]>;
+	category: string = 'all';
+
 	constructor(
 		private expenseApiService: ExpenseApiService,
 		private expenseCategoryApiService: ExpenseCategoryApiService) { }
+
 	ionViewDidEnter(): void {
 		this.source = this.expenseApiService.all().pipe(map(response => response.data));
 		this.expenseCategories = this.expenseCategoryApiService.all().pipe(map(response => response.data));
+	}
+
+	filter() {
+		if (this.category == 'all') {
+			this.source = this.expenseApiService.all().pipe(map(response => response.data));
+		} else {
+			this.source = this.expenseApiService.getExpensesByCategoryIdAsync(this.category).pipe(map(response => response.data));
+		}
 	}
 
 }

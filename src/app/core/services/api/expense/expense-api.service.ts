@@ -22,6 +22,13 @@ export class ExpenseApiService {
 		);
 	}
 
+	public getExpensesByCategoryIdAsync(categoryId: string) {
+		const url = this.apiConfig.composeUrl(`expense/GetByCategoryIdAsync/${categoryId}`);
+		return this.http.get<GetExpenseResponse>(url).pipe(
+			take(1)
+		);
+	}
+
 	public create(request: PostCreateExpenseRequest) {
 		const url = this.apiConfig.composeUrl('expense');
 		return this.http.post<string>(url, request).pipe(

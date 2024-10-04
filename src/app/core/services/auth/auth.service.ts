@@ -59,7 +59,7 @@ export class AuthService {
 		return tokenUserModel;
 	}
 
-	public logOut() {
+	public async logOut() {
 		console.log('AuthService logOut navigating to login');
 		this.router.navigate(['/', 'login']);
 	}

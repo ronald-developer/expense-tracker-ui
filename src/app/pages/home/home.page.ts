@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+	selector: 'app-home',
+	templateUrl: './home.page.html',
+	styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  constructor() { }
+	constructor(private menuCtrl: MenuController, private auth: AuthService) { }
 
-  ngOnInit() {
-  }
+
+	async showMenu() {
+		const id = 'account-menu';
+		await this.menuCtrl.toggle(id);
+	}
+
+	public logout() {
+		this.auth.setTokenModel(null);
+	}
 
 }

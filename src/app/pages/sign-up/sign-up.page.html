@@ -1,10 +1,30 @@
 
 <ion-content class="ion-padding" [fullscreen]="true">
-	<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+	<form #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
 		<ion-grid>
 			<ion-row>
 				<ion-col size-sm="6" offset-sm="3">
 					<ion-list>
+						<ion-item>
+							<ion-label position="floating">Firstname</ion-label>
+							<ion-input
+								type="text"
+								ngModel
+								name="firstname"
+								required
+								#firstnameCtrl="ngModel"
+							></ion-input>
+						</ion-item>
+						<ion-item>
+							<ion-label position="floating">Lastname</ion-label>
+							<ion-input
+								type="text"
+								ngModel
+								name="lastname"
+								required
+								#lastnameCtrl="ngModel"
+							></ion-input>
+						</ion-item>
 						<ion-item>
 							<ion-label position="floating">Email</ion-label>
 							<ion-input
@@ -35,6 +55,17 @@
 								#passwordCtrl="ngModel"
 							></ion-input>
 						</ion-item>
+						<ion-item>
+							<ion-label position="floating">Repeat password</ion-label>
+							<ion-input
+								type="password"
+								ngModel
+								name="repassword"
+								required
+								minlength="6"
+								#repasswordCtrl="ngModel"
+							></ion-input>
+						</ion-item>
 						<ion-item
 							*ngIf="!passwordCtrl.valid && passwordCtrl.touched"
 							lines="none"
@@ -53,9 +84,9 @@
 						color="primary"
 						fill="clear"
 						expand="block"
-						(click)="switchToSignup()"
+						(click)="switchToLogin()"
 					>
-						Switch to Signup
+						Switch to Login
 					</ion-button>
 					<ion-button
 						type="submit"
@@ -63,11 +94,14 @@
 						expand="block"
 						[disabled]="!f.valid"
 					>
-					Login
+					Signup
 					</ion-button>
 				</ion-col>
 			</ion-row>
 		</ion-grid>
 	</form>
 
+	<!-- <div class="ion-text-center">
+	  <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>
+	</div> -->
 </ion-content>

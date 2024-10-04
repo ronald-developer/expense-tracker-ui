@@ -1,4 +1,4 @@
-<ion-tabs>
+<ion-tabs id="home-content">
 	<ion-tab-bar slot="bottom">
 		<ion-tab-button tab="dashboard">
 			<ion-icon aria-hidden="true" name="home"></ion-icon>
@@ -13,12 +13,25 @@
 			<ion-icon aria-hidden="true" name="construct-outline"></ion-icon>
 			<ion-label>Setup</ion-label>
 		</ion-tab-button>
-		<ion-tab-button tab="more">
+		<ion-tab-button (click)="showMenu()">
 			<ion-icon
 				aria-hidden="true"
 				name="person-circle-outline"
 			></ion-icon>
-			<ion-label>Account</ion-label>
+			<ion-label >Account</ion-label>
 		</ion-tab-button>
 	</ion-tab-bar>
 </ion-tabs>
+
+<ion-menu side="end" menuId="account-menu" type="push" content-id="home-content">
+	<ion-header>
+	  <ion-toolbar>
+		<ion-title>Account</ion-title>
+	  </ion-toolbar>
+	</ion-header>
+	<ion-content class="ion-padding">
+	  <ion-menu-toggle>
+		<ion-button (click)="logout()">Logout</ion-button>
+	  </ion-menu-toggle>
+	</ion-content>
+</ion-menu>

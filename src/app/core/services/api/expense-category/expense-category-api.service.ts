@@ -21,6 +21,7 @@ export class ExpenseCategoryApiService {
 		);
 	}
 
+
 	public create(request: PostCreateExpenseCategoryRequest) {
 		const url = this.apiConfig.composeUrl('expensecategory');
 		return this.http.post<string>(url, request).pipe(
