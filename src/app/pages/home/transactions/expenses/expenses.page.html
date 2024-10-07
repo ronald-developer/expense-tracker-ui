@@ -22,7 +22,7 @@
 		  </ion-row>
 		  <ion-row  class="ion-justify-content-center" *ngFor="let data of source|async">
 			<ion-col size="6" >{{data.description}}</ion-col>
-			<ion-col size="3" >{{data.amount| currency:'PHP':true:'4.2-2'}}</ion-col>
+			<ion-col size="3" >{{data.amount| currency:'PHP':true:'1.2-2'}}</ion-col>
 			<ion-col size="3" >{{data.date|date:'MM-dd-yyyy'}}</ion-col>
 		  </ion-row>
 	</ion-grid>

@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { APP_API_URL_CFG, TOKEN_STORAGE_CFG } from './core/injection-tokens/injection-token-configurations';
 import { TokenModel } from './core/services/api/account/models/token-model';
 import { AuthInterceptor } from './core/services/interceptors/auth.interceptor';
-import { provideServiceWorker } from '@angular/service-worker';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -18,10 +17,6 @@ import { provideServiceWorker } from '@angular/service-worker';
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		provideServiceWorker('ngsw-worker.js', {
-			enabled: environment.production,
-			registrationStrategy: 'registerImmediately'
-		}),
 		provideHttpClient(withInterceptorsFromDi()),
 		{
 			provide: APP_API_URL_CFG, useValue: {
